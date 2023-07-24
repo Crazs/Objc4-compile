@@ -28,9 +28,7 @@
 #ifndef _LIBC_CRASHREPORTERCLIENT_H
 #define _LIBC_CRASHREPORTERCLIENT_H
 
-// 因为我已经在Build Settings中添加了这个宏，所以这里先注释掉
-//#define LIBC_NO_LIBCRASHREPORTERCLIENT
-
+#define LIBC_NO_LIBCRASHREPORTERCLIENT
 #ifdef LIBC_NO_LIBCRASHREPORTERCLIENT
 
 /* Fake the CrashReporterClient API */

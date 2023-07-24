@@ -388,7 +388,8 @@ unsigned int getPreoptimizedClassUnreasonableCount()
     // Unless explicitly told to disable the optimization
     if (DisablePreopt) return 0;
 
-    return _dyld_objc_class_count();
+    return 0;
+//    return _dyld_objc_class_count();
 }
 
 

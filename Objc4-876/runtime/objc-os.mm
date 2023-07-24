@@ -393,14 +393,15 @@ map_images_nolock(unsigned mhCount, const char * const mhPaths[],
         // Disable +initialize fork safety if the app has a
         //   __DATA,__objc_fork_ok section.
 
-        if (!dyld_program_sdk_at_least(dyld_platform_version_macOS_10_13)) {
-            DisableInitializeForkSafety = On;
-            if (PrintInitializing) {
-                _objc_inform("INITIALIZE: disabling +initialize fork "
-                             "safety enforcement because the app is "
-                             "too old.)");
-            }
-        }
+        // FIX: 注释掉了
+//        if (!dyld_program_sdk_at_least(dyld_platform_version_macOS_10_13)) {
+//            DisableInitializeForkSafety = On;
+//            if (PrintInitializing) {
+//                _objc_inform("INITIALIZE: disabling +initialize fork "
+//                             "safety enforcement because the app is "
+//                             "too old.)");
+//            }
+//        }
 
         for (uint32_t i = 0; i < hCount; i++) {
             auto hi = hList[i];
@@ -812,14 +813,15 @@ void _objc_init(void)
     _imp_implementationWithBlock_init();
 #endif
 
-    _dyld_objc_callbacks_v1 callbacks = {
-        1, // version
-        &map_images,
-        load_images,
-        unmap_image,
-        _objc_patch_root_of_class
-    };
-    _dyld_objc_register_callbacks((_dyld_objc_callbacks*)&callbacks);
+    // FIX:注释掉了
+//    _dyld_objc_callbacks_v1 callbacks = {
+//        1, // version
+//        &map_images,
+//        load_images,
+//        unmap_image,
+//        _objc_patch_root_of_class
+//    };
+//    _dyld_objc_register_callbacks((_dyld_objc_callbacks*)&callbacks);
 
     didCallDyldNotifyRegister = true;
 }
